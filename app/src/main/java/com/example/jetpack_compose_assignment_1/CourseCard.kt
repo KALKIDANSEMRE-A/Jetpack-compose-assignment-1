@@ -19,13 +19,14 @@ fun CourseCard(course: Course) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(8.dp)
+            .padding(vertical = 6.dp)
             .clickable { isExpanded = !isExpanded }
             .animateContentSize(),
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surface
+            containerColor = MaterialTheme.colorScheme.secondaryContainer,
+            contentColor = MaterialTheme.colorScheme.onSecondaryContainer
         ),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(
@@ -34,18 +35,16 @@ fun CourseCard(course: Course) {
                 color = MaterialTheme.colorScheme.primary
             )
             Spacer(modifier = Modifier.height(4.dp))
-            Row(horizontalArrangement = Arrangement.SpaceBetween) {
+            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
                 Text(
                     text = "Code: ${course.code}",
                     style = MaterialTheme.typography.bodyMedium
                 )
-                Spacer(modifier = Modifier.width(16.dp))
                 Text(
                     text = "Credits: ${course.creditHours}",
                     style = MaterialTheme.typography.bodyMedium
                 )
             }
-
             if (isExpanded) {
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(
@@ -70,10 +69,7 @@ fun LightPreview() {
     }
 }
 
-@Preview(
-    showBackground = true,
-    uiMode = Configuration.UI_MODE_NIGHT_YES
-)
+@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 fun DarkPreview() {
     Jetpackcomposeassignment1Theme {

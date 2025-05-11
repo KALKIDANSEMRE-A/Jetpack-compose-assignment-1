@@ -22,10 +22,7 @@ class MainActivity : ComponentActivity() {
             var isDarkTheme by remember { mutableStateOf(false) }
 
             Jetpackcomposeassignment1Theme(darkTheme = isDarkTheme) {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
+                Surface(modifier = Modifier.fillMaxSize()) {
                     Column {
                         ThemeToggle(isDarkTheme) { isDarkTheme = it }
                         CourseListScreen(sampleCourses)
@@ -44,6 +41,7 @@ fun ThemeToggle(isDark: Boolean, onToggle: (Boolean) -> Unit) {
             .padding(16.dp),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
+
         Switch(
             checked = isDark,
             onCheckedChange = onToggle
